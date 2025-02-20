@@ -6,7 +6,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 # General Wayland Variables
 export GDK_BACKEND=wayland
 export QT_QPA_PLATFORM=wayland
-export SDL_VIDEODRIVER=wayland
 export CLUTTER_BACKEND=wayland
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_TYPE=wayland
@@ -26,7 +25,7 @@ export MOZ_ENABLE_WAYLAND=1
 export VLC_FORCE_WAYLAND=1
 
 # Optional: For SDL-based Apps (games, etc.)
-export SDL_VIDEODRIVER=wayland
+export SDL_VIDEODRIVER='wayland,x11'
 
 # Optional: For Clutter-based Applications
 export CLUTTER_BACKEND=wayland
