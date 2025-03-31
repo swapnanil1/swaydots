@@ -11,7 +11,7 @@ set $right d
 # Default Applications and Terminals
 set $term alacritty
 set $browser firefox
-set $fileManager dolphin
+set $fileManager nemo
 set $screenshot "flameshot gui"
 set $applicationLaucher wofi --show=drun --lines=7 --prompt=""
 
@@ -51,7 +51,7 @@ exec_always --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_
 exec_always --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id swaync
-exec_always XDG_MENU_PREFIX=arch- kbuildsycoca6
+# exec_always XDG_MENU_PREFIX=arch- kbuildsycoca6
 exec wl-paste --watch cliphist store
 exec /usr/bin/keepassxc
 exec /usr/bin/flameshot
