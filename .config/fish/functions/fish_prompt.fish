@@ -1,20 +1,43 @@
 function fish_prompt
     set -l full_path (pwd)
-    set -l path_parts (string split / $full_path)
+    set -l path_to_process (string replace -- "$HOME" "~" $full_path)
+    set -l path_parts (string split / $path_to_process)
     set -l truncated_parts
 
-    for part in $path_parts
-        if test -n "$part"
-            # disply first 6 characters; change to your like
-            set -a truncated_parts (string sub --length 6 $part)
-        else
-            # this preserved the empty parts (handeling the leading '/' correctly)
+    if test (count $path_parts) -gt 0
+        set -l first_part $path_parts[1]
+        if test "$first_part" = "~"
+            set -a truncated_parts "~"
+        else if test "$first_part" = ""
             set -a truncated_parts ""
+        else
+            set -a truncated_parts (string sub --length 6 $first_part)
         end
     end
-    set -l display_path (string join / $truncated_parts)
+
+    if test (count $path_parts) -gt 1
+        for i in (seq 2 (count $path_parts))
+            set part $path_parts[$i]
+            if test -n "$part"
+                set -a truncated_parts (string sub --length 6 $part)
+            end
+        end
+    end
+
+    set -l display_path "?"
+    if test (count $truncated_parts) -gt 0
+        set display_path (string join / $truncated_parts)
+        if test "$display_path" = ""; and test "$full_path" = "/"
+            set display_path "/"
+        end
+    else
+        if test "$full_path" = "/"
+           set display_path "/"
+        end
+    end
+
     set_color 50BFB4
-    echo -n $display_path # Print the truncated path
+    echo -n $display_path
     set_color yellow
     echo -n ' > '
     set_color normal
