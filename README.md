@@ -1,6 +1,6 @@
 ## Install 
 ```
-paru -S fish sway ly swaybg swaylock swayidle swaync waybar wofi grim slurp pavucontrol alacritty xorg-xwayland cliphist polkit lxqt-policykit wayland-protocols xdg-desktop-portal xdg-desktop-portal-wlr xdg-user-dirs xdg-utils ttf-jetbrains-mono-nerd python-i3ipc lxappearance git ufw eza timeshift cronie archlinux-xdg-menu nemo ristretto xed nemo-fileroller xreader flameshot-git i3-gnome-pomodoro firefox discord telegram-desktop keepassxc mpv qbittorrent bleachbit onlyoffice steam wine-staging goverlay lutris heroic-games-launcher-bin noise-suppression-for-voice
+paru -S fish sway ly swaybg swaylock swayidle swaync waybar wofi grim slurp pavucontrol alacritty xorg-xwayland cliphist polkit lxqt-policykit wayland-protocols xdg-desktop-portal xdg-desktop-portal-wlr xdg-user-dirs xdg-utils ttf-jetbrains-mono-nerd python-i3ipc lxappearance git ufw eza timeshift cronie archlinux-xdg-menu nemo ristretto xed nemo-fileroller xreader satty i3-gnome-pomodoro firefox discord telegram-desktop keepassxc mpv qbittorrent bleachbit onlyoffice steam wine-staging goverlay lutris heroic-games-launcher-bin noise-suppression-for-voice
 ```
 ## Setup Autotiling 
 Install python-i3ipc then rename and insert [main](https://github.com/nwg-piotr/autotiling/blob/master/autotiling/main.py) script's content under usr/bin/autotiling 
