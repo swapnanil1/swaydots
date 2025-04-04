@@ -12,7 +12,7 @@ set $right d
 set $term alacritty
 set $browser firefox
 set $fileManager nemo
-set $screenshot "flameshot gui"
+set $screenshot "grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
 set $applicationLaucher wofi --show=drun --lines=7 --prompt=""
 
 # Custom Keybinds
@@ -54,7 +54,7 @@ exec_always --no-startup-id swaync
 # exec_always XDG_MENU_PREFIX=arch- kbuildsycoca6
 exec wl-paste --watch cliphist store
 exec /usr/bin/keepassxc
-exec /usr/bin/flameshot
+exec /opt/safing/portmaster/portmaster-start notifier
 
 
 # Window Decoration Settings
