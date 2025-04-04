@@ -12,7 +12,7 @@ set $right d
 set $term alacritty
 set $browser firefox
 set $fileManager nemo
-set $screenshot "grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
+set $screenshot_script $HOME/.config/sway/scripts/screenshot_annotate.sh
 set $applicationLaucher wofi --show=drun --lines=7 --prompt=""
 
 # Custom Keybinds
@@ -20,7 +20,7 @@ bindsym $mod+space exec $applicationLaucher
 bindsym $mod+r exec $browser
 bindsym $mod+Return exec $term
 bindsym $mod+e exec $fileManager
-bindsym $mod+Shift+p exec $screenshot
+bindsym $mod+Shift+p exec $screenshot_script
 bindsym $mod+n exec swaync-client -t -sw
 bindsym $mod+k exec i3-gnome-pomodoro start
 bindsym $mod+l exec i3-gnome-pomodoro toggle
