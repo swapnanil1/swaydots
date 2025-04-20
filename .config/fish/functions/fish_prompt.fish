@@ -36,9 +36,9 @@ function fish_prompt
         end
     end
 
-    set_color 50BFB4
+    set_color bb9af7
     echo -n $display_path
-    set_color yellow
+    set_color normal
     echo -n ' > '
     set_color normal
 end
