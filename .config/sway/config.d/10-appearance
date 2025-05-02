@@ -1,0 +1,35 @@
+# ~/.config/sway/config.d/10-appearance
+# Fonts, Borders, Gaps, Window Colors, Window Rules
+
+### Font
+font pango:"JetBrainsMono Nerd Font" 11
+
+### Borders
+default_border pixel 2
+default_floating_border pixel 2
+
+### Gaps
+gaps inner 8
+gaps outer 5
+
+### Window Colors (Uses variables from 00-variables)
+# class                 border  bground text    indicator child_border
+client.focused          $blue   $base   $text   $mauve    $blue
+client.focused_inactive $surface1 $base $subtext1 $surface0 $surface1
+client.unfocused        $surface0 $base $subtext0 $surface0 $surface0
+client.urgent           $red    $base   $text   $red      $red
+client.placeholder      $surface0 $base $text   $surface0 $surface0
+client.background       $base
+
+### Window Behavior Rules
+
+# Inhibit swayidle (locking/sleeping) when an app is fullscreen
+# Note: This relies on apps setting the fullscreen state correctly.
+# The ".*" regex might be too broad; consider targeting specific apps if needed.
+for_window [title=".*"] inhibit_idle fullscreen
+for_window [class=".*"] inhibit_idle fullscreen
+for_window [app_id=".*"] inhibit_idle fullscreen
+
+# Allow tearing globally (can reduce latency in games but may cause visible tearing)
+# This can also be set per-application using for_window rules if preferred.
+for_window [all] allow_tearing yes

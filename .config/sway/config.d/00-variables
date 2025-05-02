@@ -1,0 +1,75 @@
+# ~/.config/sway/config.d/00-variables
+# Variables, Application definitions, Color definitions
+
+### Modifier Keys
+set $mod Mod4
+
+### Applications
+set $term alacritty
+set $menu wofi --show drun -I -m -p "Run:"
+set $filemanager nemo
+set $clipboard cliphist list | wofi --dmenu -p "Clipboard:" | cliphist decode | wl-copy
+set $lock swaylock -f -c 11111b # Uses $crust color
+
+### Movement Keys (vim-style)
+set $left h
+set $down j
+set $up k
+set $right l
+
+### Catppuccin Mocha Color Palette
+set $rosewater #f5e0dc
+set $flamingo #f2cdcd
+set $pink #f5c2e7
+set $mauve #cba6f7
+set $red #f38ba8
+set $maroon #eba0ac
+set $peach #fab387
+set $yellow #f9e2af
+set $green #a6e3a1
+set $teal #94e2d5
+set $sky #89dceb
+set $sapphire #74c7ec
+set $blue #89b4fa
+set $lavender #b4befe
+set $text #cdd6f4
+set $subtext1 #bac2de
+set $subtext0 #a6adc8
+set $overlay2 #9399b2
+set $overlay1 #7f849c
+set $overlay0 #6c7086
+set $surface2 #585b70
+set $surface1 #45475a
+set $surface0 #313244
+set $base #1e1e2e
+set $mantle #181825
+set $crust #11111b
+
+# Updated swaylock command with Catppuccin theme and wallpaper
+set $lock swaylock \
+    --image ~/Pictures/Wallpapers/Lockscreen/lock.png \
+    --font "JetBrainsMono Nerd Font" \
+    --indicator-caps-lock \
+    --show-failed-attempts \
+    --indicator-radius 120 \
+    --indicator-thickness 10 \
+    --inside-color 1e1e2eB0 \
+    --inside-ver-color a6e3a1B0 \
+    --inside-wrong-color f38ba8B0 \
+    --inside-clear-color 89dcebB0 \
+    --ring-color 45475aB0 \
+    --ring-ver-color a6e3a1B0 \
+    --ring-wrong-color f38ba8B0 \
+    --ring-clear-color 89dcebB0 \
+    --key-hl-color 89b4faB0 \
+    --bs-hl-color fab387B0 \
+    --text-color cdd6f4 \
+    --text-ver-color a6e3a1 \
+    --text-wrong-color f38ba8 \
+    --text-clear-color 89dceb \
+    --text-caps-lock-color f9e2af \
+    --line-uses-ring \
+    --separator-color 00000000 \
+    --effect-blur 7x5 \
+    --grace 1 \
+    --fade-in 0.2

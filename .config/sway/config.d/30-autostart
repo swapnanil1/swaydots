@@ -1,0 +1,38 @@
+# ~/.config/sway/config.d/30-autostart
+# Applications and services to launch when Sway starts
+
+# --- Core Services & Daemons ---
+
+# Clipboard history daemon
+exec wl-paste --watch cliphist store
+
+# Notification daemon (Choose ONE: dunst OR swaync)
+exec dunst
+# exec swaync # Uncomment this and comment out 'exec dunst' if you prefer swaync
+
+# PolicyKit agent (Authentication prompts)
+exec /usr/bin/lxqt-policykit-agent
+# Ensure this is the correct path/agent
+
+# Status bar
+exec waybar
+
+# --- Environment Setup for Systemd/D-Bus Integration ---
+# Import essential env vars into systemd user session
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+# Update D-Bus activation environment
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# --- Optional User Applications & Utilities ---
+
+# Automatic tiling script (Install 'autotiling-rs' or similar package first)
+exec autotiling
+
+# Password manager (starts GUI on login)
+exec /usr/bin/keepassxc
+
+# --- Setup for Utilities Used by Keybinds ---
+# Define screenshot directory location
+set $screenshot_dir ~/Pictures/Screenshots
+# Ensure screenshot directory exists on startup
+exec mkdir -p $screenshot_dir

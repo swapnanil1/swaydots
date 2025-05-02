@@ -5,4 +5,5 @@ if status is-interactive
     alias pi='sudo pacman -S'
     alias pr='sudo pacman -R'
     alias prr='sudo pacman -Rns'
+    alias vim='nvim'
 end

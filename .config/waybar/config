@@ -1,210 +1,237 @@
 {
     "layer": "top",
     "position": "top",
-    "width": 1910,
-    "spacing": 10,
-  
+    "height": 36,
     "modules-left": [
-      "custom/pomodoro",
-      "custom/todo",
-      "sway/workspaces",
-      "sway/window",
-      "sway/mode"
+        "wlr/taskbar",
+        "cpu",
+        "custom/cputemp",
+        "custom/gputemp",
+        "memory",
+        "network",
+        "battery"
     ],
-    
-    "sway/workspaces": {
-      "disable-scroll": true,
-      "all-outputs": true,
-      "warp-on-scroll": false,
-      "format": "{name}: {icon}",
-      "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "",
-        "4": "",
-        "5": "",
-        "urgent": "",
-        "default": ""
-      }
-    },
-  
-    "sway/window": {
-      "max-length": 50
-    },
-  
-    "sway/mode": {
-      "format": " {}",
-      "max-length": 50,
-      "always-on": true,
-      "no-mode-message": "No Mode"
-    },
-  
-    "custom/todo": {
-      "exec": "~/.config/waybar/scripts/todo.sh",
-      "return-type": "json",
-      "format": " {} ",
-      "on-click": "alacritty -e vim ~/todo.txt",
-      "interval": 5
-    },
-  
-    "modules-center": [],
-  
+    "modules-center": [
+        "clock",
+        "sway/workspaces",
+        "custom/pomo"
+    ],
     "modules-right": [
-      "network",
-      "temperature#cpu",
-      "cpu",
-      "memory",
-      "custom/gpu-usage",
-      "temperature",
-      "pulseaudio",
-      "custom/brightness",
-      "clock",
-      "idle_inhibitor",
-      "custom/power",
-      "power-profiles-daemon",
-      "tray"
+        "custom/mpris-prev",
+        "custom/mpris-playpause",
+        "custom/mpris-next",
+        "pulseaudio",
+        "backlight",
+        "custom/ddcbrightness",
+        "power-profiles-daemon",
+        "custom/screenshot",
+        "tray",
+        "custom/power"
     ],
-  
-    "custom/brightness": {
-      "format": "{icon} {percentage}%",
-      "interval": 1,
-      "format-icons": [""],
-      "exec": "~/.config/waybar/scripts/waybar-ddutil",
-      "on-scroll-up": "ddcutil setvcp 10 + 10",
-      "on-scroll-down": "ddcutil setvcp 10 - 10",
-      "return-type": "json"
-    },
-  
-    "idle_inhibitor": {
-      "format": "{icon}",
-      "format-icons": {
-        "activated": " ",
-        "deactivated": " "
-      }
-    },
-  
-    "pulseaudio": {
-      "scroll-step": 5,
-      "format": "{icon}{volume}% {format_source}",
-      "format-bluetooth": "{icon} {volume}% {format_source}",
-      "format-bluetooth-muted": "{icon} {format_source}",
-      "format-muted": "{format_source}",
-      "format-source": "{volume}%",
-      "format-source-muted": " ",
-      "format-icons": {
-        "headphone": " ",
-        "default": ["", "", " "]
-      },
-      "on-click": "pavucontrol-qt",
-      "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-      "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-    },
-  
-    "custom/pomodoro": {
-      "exec": "i3-gnome-pomodoro status --format=waybar --show-seconds",
-      "return-type": "json",
-      "interval": 1,
-      "format": "  {}",
-      "format-icons": "  {}",
-      "on-click": "i3-gnome-pomodoro start",
-      "on-click-middle": "i3-gnome-pomodoro toggle",
-      "on-click-right": "i3-gnome-pomodoro stop"
-    },
-  
-    "cpu": {
-      "interval": 10,
-      "format": " {usage}%"
-    },
-  
-    "memory": {
-      "interval": 10,
-      "format": " {}%"
-    },
-  
-    "custom/gpu-usage": {
-      "exec": "cat /sys/class/hwmon/hwmon*/device/gpu_busy_percent",
-      "format": " {}%",
-      "return-type": "",
-      "interval": 1
-    },
-  
-    "temperature": {
-      "thermal-zone": 2,
-      "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-      "critical-threshold": 80,
-      "format-critical": "GPI {temperatureC}°C",
-      "format": "GPU {temperatureC}°C |",
-      "format-icons": ["", "", ""]
-    },
-  
-    "temperature#cpu": {
-      "thermal-zone": 1,
-      "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
-      "critical-threshold": 80,
-      "format-critical": "| CPU {temperatureC}°C",
-      "format": "| CPU {temperatureC}°C",
-      "format-icons": ["", "", ""]
-    },
-  
-    "network": {
-      "interface": "enp34s0",
-      "format-wifi": "   {bandwidthDownBits}  {bandwidthUpBits}",
-      "format-ethernet": " {bandwidthDownBits}  {bandwidthUpBits}",
-      "format-linked": "(No IP)",
-      "format-disconnected": "",
-      "on-click": "alacritty -e nmtui",
-      "tooltip": false,
-      "interval": 3
-    },
-  
-    "clock": {
-      "timezone": "Asia/Kolkata",
-      "format": "{:%I:%M%p} |",
-      "format-alt": "{:%A, %B %d, %Y (%R)}   |",
-      "tooltip-format": "<tt><small>{calendar}</small></tt>",
-      "calendar": {
-        "mode": "year",
-        "mode-mon-col": 3,
-        "weeks-pos": "right",
-        "on-scroll": 1,
-        "on-click-right": "mode",
-        "format": {
-          "months": "<span color='#ffead3'><b>{}</b></span>",
-          "days": "<span color='#ecc6d9'><b>{}</b></span>",
-          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-          "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": " ",
+            "2": " ",
+            "3": " ",
+            "4": " ",
+            "5": " ",
+            "6": " ",
+            "7": " ",
+            "8": " ",
+            "9": " ",
+            "urgent": " ",
+            "focused": " ",
+            "empty": " ",
+            "default": " "
         }
-      },
-      "actions": {
-        "on-click-right": "mode",
-        "on-click-forward": "tz_up",
-        "on-click-backward": "tz_down",
-        "on-scroll-up": "shift_up",
-        "on-scroll-down": "shift_down"
-      }
     },
-
-    "power-profiles-daemon": {
-      "format": "{icon} ",
-      "tooltip-format": "Power profile: {profile}-driver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
-    },
-  
-    "custom/power": {
-      "tooltip": false,
-      "format": " ",
-      "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Reload Sway' 'swaymsg reload && pkill waybar && waybar' -b 'Shutdown' 'swaymsg exec systemctl poweroff' -b 'Reboot' 'swaymsg exec systemctl reboot' -b 'Reboot to Windows' 'systemctl reboot --boot-loader-entry=auto-windows' -b 'Reboot to BIOS' 'systemctl reboot --firmware-setup'"
-    },
-  
     "tray": {
-      "spacing": 10
+        "icon-size": 18,
+        "spacing": 10
+    },
+    "clock": {
+        "timezone": "Asia/Kolkata",
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%A, %B %d, %Y (%R)} ",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "cpu": {
+        "format": "{icon} {usage}%",
+        "tooltip": true,
+        "interval": 2,
+        "format-icons": ["󰍛 "]
+    },
+    "memory": {
+        "format": "󰾆 {used:0.1f}G/{total:0.1f}G",
+        "interval": 2
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "network": {
+        "format-wifi": "󰖩 {signalStrength}%   {bandwidthUpBits}   {bandwidthDownBits}",
+        "format-ethernet": "󰈀  {bandwidthUpBits}   {bandwidthDownBits}",
+        "tooltip-format": "{ifname} via {gwaddr} | {ipaddr}/{cidr}",
+        "format-linked": "{ifname} (No IP) 󰈀",
+        "format-disconnected": "󰖪 Disconnected",
+        "format-alt": "󰈀 {ifname} ->  {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) \nIP: {ipaddr}\nGateway: {gwaddr}\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "tooltip-format-ethernet": "{ifname} \nIP: {ipaddr}\nGateway: {gwaddr}\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "tooltip-format-disconnected": "Disconnected",
+        "interval": 2
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "󰖁  {format_source}",
+        "format-muted": "󰖁 {format_source}",
+        "format-source": "󰍬 {volume}%",
+        "format-source-muted": "󰍭 ",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰋎",
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "portable": "󰏲",
+            "car": "󰄋",
+            "default": ["󰕿", "󰖀", "󰖀", "󰖀"]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/cputemp": {
+        "format": "{icon} {text}°C",
+        "return-type": "json",
+        "format-icons": [""],
+        "interval": 5,
+        "exec": "~/.config/waybar/scripts/get_temps.sh cpu",
+        "tooltip": true
+    },
+    "custom/gputemp": {
+        "format": "{icon} {text}°C",
+        "return-type": "json",
+        "format-icons": ["󰘚 "],
+        "interval": 5,
+        "exec": "~/.config/waybar/scripts/get_temps.sh gpu",
+        "tooltip": true
+    },
+    "custom/pomo": {
+        "format": "{}",
+        "return-type": "json",
+        "interval": 1,
+        "exec": "~/.config/waybar/scripts/pomo.sh",
+        "exec-on-event": true,
+        "tooltip": true,
+        "on-click": "~/.config/waybar/scripts/pomo.sh start",
+        "on-click-right": "~/.config/waybar/scripts/pomo.sh toggle_pause",
+        "on-click-middle": "~/.config/waybar/scripts/pomo.sh stop"
+    },
+    "custom/ddcbrightness": {
+        "format": "{icon} {text}%",
+        "return-type": "json",
+        "format-icons": ["󰃞 ", "󰃞 ", "󰃟 ", "󰃟 ", "󰃝 ", "󰃝 ", "󰃜 ", "󰃜 "],
+        "exec": "~/.config/waybar/scripts/ddc_brightness.sh",
+        "on-scroll-up": "~/.config/waybar/scripts/ddc_brightness.sh inc",
+        "on-scroll-down": "~/.config/waybar/scripts/ddc_brightness.sh dec",
+        "interval": 5,
+        "exec-on-event": true,
+        "tooltip": true,
+        "min-length": 6
+    },
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞 ", "󰃞 ", "󰃟 ", "󰃟 ", "󰃝 ", "󰃝 ", "󰃜 ", "󰃜 "],
+        "on-scroll-up": "brightnessctl set 5%+",
+        "on-scroll-down": "brightnessctl set 5%-",
+        "min-length": 6
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    "custom/screenshot": {
+        "format": "󰄀",
+        "tooltip": true,
+        "tooltip-format": "Screenshot Tool\nLeft-Click: Full Screen\nRight-Click: Active Window",
+        "on-click": "grim -t ppm - | satty --filename - --output-filename \"$HOME/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H%M%S')-full.png\"",
+        "on-click-right": "~/.config/waybar/scripts/screenshot_active.sh"
+    },
+    "custom/power": {
+        "format": " ",
+        "tooltip": true,
+        "tooltip-format": "Power Menu",
+        "menu": "on-click",
+        "menu-file": "~/.config/waybar/power_menu.xml",
+        "menu-actions": {
+            "shutdown": "systemctl poweroff",
+            "reboot": "systemctl reboot",
+            "suspend": "systemctl suspend || loginctl suspend",
+            "lock": "swaylock -f -c 11111b"
+        }
+    },
+    "custom/mpris-prev": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "playerctl previous"
+    },
+    "custom/mpris-playpause": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/mpris_status.sh",
+        "on-click": "playerctl play-pause",
+        "interval": 1
+    },
+    "custom/mpris-next": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "playerctl next"
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 18,
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": ["Alacritty"],
+        "app_ids-mapping": {}
     }
-  }
-  
+}

@@ -1,217 +1,26 @@
-# Wallpaper Configuration
-output * bg ~/.config/wallpapers/mountainBlue.png fill
+# ~/.config/sway/config
+# Main Sway configuration file - Includes components from config.d/
 
-# Keybind Variables
-set $mod Mod4
-set $left a
-set $down s
-set $up w
-set $right d
+# Include files from the config.d directory
+# Order matters: Variables need to be defined before use.
 
-# Default Applications and Terminals
-set $term alacritty
-set $browser firefox
-set $fileManager nemo
-set $screenshot_script $HOME/.config/sway/scripts/screenshot_annotate.sh
-set $applicationLaucher wofi --show=drun --lines=7 --prompt=""
+# Variables, Applications, Colors
+include config.d/00-variables
 
-# Custom Keybinds
-bindsym $mod+space exec $applicationLaucher
-bindsym $mod+r exec $browser
-bindsym $mod+Return exec $term
-bindsym $mod+e exec $fileManager
-bindsym $mod+Shift+p exec $screenshot_script
-bindsym $mod+n exec swaync-client -t -sw
-bindsym $mod+k exec i3-gnome-pomodoro start
-bindsym $mod+l exec i3-gnome-pomodoro toggle
-bindsym $mod+p exec cliphist list | wofi -S dmenu | cliphist decode | wl-copy
-bindsym --whole-window button8 exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+# Fonts, Borders, Gaps, Window Colors
+include config.d/10-appearance
 
-# Default Keybinds
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+x exec "pkill waybar"
-floating_modifier $mod normal
-bindsym $mod+Shift+q kill
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+# Monitor setup (add input config here if needed)
+include config.d/20-outputs-inputs
 
-# Layout Management Keybinds
-bindsym $mod+b splith
-bindsym $mod+v splitv
-bindsym $mod+c layout stacking
-bindsym $mod+x layout tabbed
-bindsym $mod+z layout toggle split
-bindsym $mod+f floating toggle
-bindsym $mod+Shift+f fullscreen
-bindsym $mod+m focus mode_toggle
-bindsym $mod+Shift+n focus parent
+# Startup applications (except idle)
+include config.d/30-autostart
 
-# Autostart Applications
-exec_always --no-startup-id /usr/bin/lxqt-policykit-agent &
-exec_always --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-exec_always --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec_always --no-startup-id autotiling
-exec_always --no-startup-id swaync
-# exec_always XDG_MENU_PREFIX=arch- kbuildsycoca6
-exec wl-paste --watch cliphist store
-exec /usr/bin/keepassxc
-exec /opt/safing/portmaster/portmaster-start notifier
+# All keybindings and modes
+include config.d/40-keybindings
 
+# Swayidle configuration
+include config.d/50-idle
 
-# Window Decoration Settings
-gaps outer 2
-gaps inner 2
-gaps top 2
-gaps bottom 0
-hide_edge_borders smart
-default_border pixel 2
-default_floating_border pixel 2
-titlebar_padding 2
-titlebar_border_thickness 2
-
-# Fonts
-font JetBrainsMono Nerd Font 13
-
-# Output Configuration
-output * {
-  res 1920x1080@144Hz
-  subpixel rgb
-  position 0,0
-  adaptive_sync on
-  max_render_time 7
-  allow_tearing yes
-}
-for_window [all] allow_tearing yes
-
-# Idle Configuration
-exec swayidle -w \
-  timeout 300 'swaylock -f -c 000000' \
-  timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-  before-sleep 'swaylock -f -c 000000'
-
-# Input Configuration
-input * {
-  accel_profile flat
-  pointer_accel 0.0
-  xkb_options altwin:swap_lalt_lwin,caps:swapescape
-}
-
-# Inhibit swaylock on fullscreen
-for_window [title=".*"] inhibit_idle fullscreen
-for_window [class=".*"] inhibit_idle fullscreen
-for_window [app_id=".*"] inhibit_idle fullscreen
-
-# Window Focus Navigation
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# Move Focused Window
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# Workspace Navigation
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
-
-# Move Container to Workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
-
-# Scratchpad Management
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
-
-# Resizing Windows
-mode "resize" {
-  bindsym $left resize shrink width 10px
-  bindsym $down resize grow height 10px
-  bindsym $up resize shrink height 10px
-  bindsym $right resize grow width 10px
-  bindsym Left resize shrink width 10px
-  bindsym Down resize grow height 10px
-  bindsym Up resize shrink height 10px
-  bindsym Right resize grow width 10px
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-bindsym $mod+Shift+r mode "resize"
-
-# Status Bar Configuration
-bar {
-  swaybar_command waybar
-}
-
-# Additional Configuration Files
-include /etc/sway/config.d/*
-
-# laptop media function keys
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
-
-# Environment Variables
-set $GDK_BACKEND wayland
-set $QT_QPA_PLATFORM wayland
-set $SDL_VIDEODRIVER wayland,x11
-set $CLUTTER_BACKEND wayland
-set $XDG_CURRENT_DESKTOP sway
-set $XDG_SESSION_TYPE wayland
-set $XDG_SESSION_DESKTOP sway
-set $QT_QPA_PLATFORM wayland
-set $XCURSOR_SIZE 24
-
-# Window Decoration Themes
-# moutainsButBlue(current)
-client.focused          #50BFB4 #50BFB4 #F8F8F2 #50BFB4   #50BFB4
-client.focused_inactive #026873 #026873 #F8F8F2 #026873   #026873
-client.unfocused        #0D0D0D #0D0D0D #BFBFBF #0D0D0D   #0D0D0D
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #180A19 #180A19 #F8F8F2 #180A19   #180A19
-client.background       #F8F8F2
-
-# RedMoon
-# class                 border  bground text    indicator child_border
-# client.focused          #CC5D8E #CC5D8E #F8F8F2 #CC5D8E   #CC5D8E
-# client.focused_inactive #662240 #662240 #F8F8F2 #662240   #662240
-# client.unfocused        #180A19 #180A19 #BFBFBF #180A19   #180A19
-# client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-# client.placeholder      #180A19 #180A19 #F8F8F2 #180A19   #180A19
-# client.background       #F8F8F2
-
-# Dracula
-# class                 border  bground text    indicator child_border
-# client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-# client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-# client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-# client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-# client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-# client.background       #F8F8F2
+# Optional: Include user-specific overrides or machine-specific settings last
+# include config.d/99-local

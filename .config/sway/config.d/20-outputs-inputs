@@ -1,0 +1,40 @@
+# ~/.config/sway/config.d/20-outputs-inputs
+# Monitor and Input device configuration
+
+### Output Configuration
+# Configure your specific output name instead of '*' if needed
+# e.g., output DP-1 { ... }
+output * {
+    # Resolution and Refresh Rate (Adjust to your monitor!)
+    resolution 1920x1080@144Hz
+    # Background color (requires swaybg)
+    bg $base solid_color
+    # Subpixel rendering (usually rgb for LCDs)
+    subpixel rgb
+    # Position (for multi-monitor setups)
+    position 0,0
+    # Adaptive Sync (VRR - requires compatible hardware/drivers)
+    adaptive_sync on
+    # Max render time (ms) - tweak if experiencing issues
+    max_render_time 7
+    # Allow tearing for this output (set globally below too)
+    allow_tearing yes
+}
+
+### Input Configuration
+# Apply to all input devices (*)
+input * {
+    # Use a flat acceleration profile (disables acceleration)
+    accel_profile flat
+    # Set acceleration factor to 0 (redundant with flat profile, but explicit)
+    pointer_accel 0.0
+    # XKB options: Swap Left Alt and Left Win/Super, make CapsLock an Esc key
+    xkb_options altwin:swap_lalt_lwin,caps:swapescape
+}
+
+# Example for specific device (find name with `swaymsg -t get_inputs`):
+# input "1267:12418:ELAN1300:00_04F3:3082_Touchpad" {
+#     tap enabled
+#     natural_scroll enabled
+#     dwt enabled
+# }

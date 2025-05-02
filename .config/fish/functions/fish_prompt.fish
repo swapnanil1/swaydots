@@ -1,4 +1,7 @@
 function fish_prompt
+    set -l color_path cba6f7
+    set -l color_separator 6c7086
+
     set -l full_path (pwd)
     set -l path_to_process (string replace -- "$HOME" "~" $full_path)
     set -l path_parts (string split / $path_to_process)
@@ -9,7 +12,6 @@ function fish_prompt
         if test "$first_part" = "~"
             set -a truncated_parts "~"
         else if test "$first_part" = ""
-            set -a truncated_parts ""
         else
             set -a truncated_parts (string sub --length 6 $first_part)
         end
@@ -25,20 +27,24 @@ function fish_prompt
     end
 
     set -l display_path "?"
-    if test (count $truncated_parts) -gt 0
+    if test "$full_path" = "/"
+        set display_path "/"
+    else if test (count $truncated_parts) -gt 0
         set display_path (string join / $truncated_parts)
-        if test "$display_path" = ""; and test "$full_path" = "/"
-            set display_path "/"
+        if test (string sub -s 1 -l 1 $full_path) = "/" && test (string sub -s 1 -l 1 $display_path) != "~"
+            set display_path "/$display_path"
         end
     else
         if test "$full_path" = "/"
-           set display_path "/"
+            set display_path "/"
         end
     end
 
-    set_color bb9af7
+    set_color $color_path
     echo -n $display_path
     set_color normal
+
+    set_color $color_separator
     echo -n ' > '
     set_color normal
 end
