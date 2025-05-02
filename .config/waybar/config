@@ -33,19 +33,23 @@
         "all-outputs": true,
         "format": "{icon}",
         "format-icons": {
-            "1": " ",
-            "2": " ",
-            "3": " ",
-            "4": " ",
-            "5": " ",
-            "6": " ",
-            "7": " ",
-            "8": " ",
-            "9": " ",
-            "urgent": " ",
-            "focused": " ",
-            "empty": " ",
-            "default": " "
+            "1": " ",
+            "2": " ",
+            "3": " ",
+            "4": " ",
+            "5": " ",
+            "6": " ",
+            "7": " ",
+            "8": " ",
+            "9": " ",
+            "urgent": " ",
+            "empty": " ",
+            "default": " "
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": []
         }
     },
     "tray": {
@@ -54,8 +58,8 @@
     },
     "clock": {
         "timezone": "Asia/Kolkata",
-        "format": "{:%I:%M %p}",
-        "format-alt": "{:%A, %B %d, %Y (%R)} ",
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%A, %B %d, %Y (%R)} ",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "year",
@@ -80,13 +84,13 @@
         }
     },
     "cpu": {
-        "format": "{icon} {usage}%",
+        "format": "{icon} {usage}%",
         "tooltip": true,
         "interval": 2,
-        "format-icons": ["󰍛 "]
+        "format-icons": ["󰍛 "]
     },
     "memory": {
-        "format": "󰾆 {used:0.1f}G/{total:0.1f}G",
+        "format": "󰾆 {used:0.1f}G/{total:0.1f}G",
         "interval": 2
     },
     "battery": {
@@ -95,31 +99,31 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": "󰂄 {capacity}%",
-        "format-plugged": "󰂄 {capacity}%",
-        "format-alt": "{time} {icon}",
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "format-alt": "{time} {icon}",
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
     "network": {
-        "format-wifi": "󰖩 {signalStrength}%   {bandwidthUpBits}   {bandwidthDownBits}",
-        "format-ethernet": "󰈀  {bandwidthUpBits}   {bandwidthDownBits}",
-        "tooltip-format": "{ifname} via {gwaddr} | {ipaddr}/{cidr}",
-        "format-linked": "{ifname} (No IP) 󰈀",
-        "format-disconnected": "󰖪 Disconnected",
-        "format-alt": "󰈀 {ifname} ->  {gwaddr}",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) \nIP: {ipaddr}\nGateway: {gwaddr}\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
-        "tooltip-format-ethernet": "{ifname} \nIP: {ipaddr}\nGateway: {gwaddr}\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "format-wifi": "󰖩 {signalStrength}%  {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-ethernet": "󰈀  {bandwidthUpBits}  {bandwidthDownBits}",
+        "tooltip-format": "{ifname} via {gwaddr} | {ipaddr}/{cidr}",
+        "format-linked": "{ifname} (No IP) 󰈀",
+        "format-disconnected": "󰖪 Disconnected",
+        "format-alt": "󰈀 {ifname} ->  {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) \nIP: {ipaddr}\nGateway: {gwaddr}\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "tooltip-format-ethernet": "{ifname} \nIP: {ipaddr}\nGateway: {gwaddr}\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
         "tooltip-format-disconnected": "Disconnected",
         "interval": 2
     },
     "pulseaudio": {
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": "󰖁  {format_source}",
-        "format-muted": "󰖁 {format_source}",
-        "format-source": "󰍬 {volume}%",
-        "format-source-muted": "󰍭 ",
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "󰖁  {format_source}",
+        "format-muted": "󰖁 {format_source}",
+        "format-source": "󰍬 {volume}%",
+        "format-source-muted": "󰍭 ",
         "format-icons": {
             "headphone": "󰋋",
             "hands-free": "󰋎",
@@ -132,7 +136,7 @@
         "on-click": "pavucontrol"
     },
     "custom/cputemp": {
-        "format": "{icon} {text}°C",
+        "format": "{icon} {text}°C",
         "return-type": "json",
         "format-icons": [""],
         "interval": 5,
@@ -140,9 +144,9 @@
         "tooltip": true
     },
     "custom/gputemp": {
-        "format": "{icon} {text}°C",
+        "format": "{icon} {text}°C",
         "return-type": "json",
-        "format-icons": ["󰘚 "],
+        "format-icons": ["󰘚 "],
         "interval": 5,
         "exec": "~/.config/waybar/scripts/get_temps.sh gpu",
         "tooltip": true
@@ -159,9 +163,9 @@
         "on-click-middle": "~/.config/waybar/scripts/pomo.sh stop"
     },
     "custom/ddcbrightness": {
-        "format": "{icon} {text}%",
+        "format": "{icon} {text}%",
         "return-type": "json",
-        "format-icons": ["󰃞 ", "󰃞 ", "󰃟 ", "󰃟 ", "󰃝 ", "󰃝 ", "󰃜 ", "󰃜 "],
+        "format-icons": ["󰃞 ", "󰃞 ", "󰃟 ", "󰃟 ", "󰃝 ", "󰃝 ", "󰃜 ", "󰃜 "],
         "exec": "~/.config/waybar/scripts/ddc_brightness.sh",
         "on-scroll-up": "~/.config/waybar/scripts/ddc_brightness.sh inc",
         "on-scroll-down": "~/.config/waybar/scripts/ddc_brightness.sh dec",
@@ -171,15 +175,15 @@
         "min-length": 6
     },
     "backlight": {
-        "format": "{icon} {percent}%",
-        "format-icons": ["󰃞 ", "󰃞 ", "󰃟 ", "󰃟 ", "󰃝 ", "󰃝 ", "󰃜 ", "󰃜 "],
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞 ", "󰃞 ", "󰃟 ", "󰃟 ", "󰃝 ", "󰃝 ", "󰃜 ", "󰃜 "],
         "on-scroll-up": "brightnessctl set 5%+",
         "on-scroll-down": "brightnessctl set 5%-",
         "min-length": 6
     },
     "power-profiles-daemon": {
         "format": "{icon}",
-        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
         "tooltip": true,
         "format-icons": {
             "default": "",
@@ -191,14 +195,14 @@
     "custom/screenshot": {
         "format": "󰄀",
         "tooltip": true,
-        "tooltip-format": "Screenshot Tool\nLeft-Click: Full Screen\nRight-Click: Active Window",
+        "tooltip-format": "Screenshot Tool\nLeft-Click: Full Screen\nRight-Click: Active Window",
         "on-click": "grim -t ppm - | satty --filename - --output-filename \"$HOME/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H%M%S')-full.png\"",
         "on-click-right": "~/.config/waybar/scripts/screenshot_active.sh"
     },
     "custom/power": {
-        "format": " ",
+        "format": " ",
         "tooltip": true,
-        "tooltip-format": "Power Menu",
+        "tooltip-format": "Power Menu",
         "menu": "on-click",
         "menu-file": "~/.config/waybar/power_menu.xml",
         "menu-actions": {
