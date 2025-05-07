@@ -1,8 +1,6 @@
 # ~/.config/sway/config.d/50-idle
 # Swayidle configuration for screen locking and power management
-
 exec swayidle -w \
          timeout 300 '$lock' \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep '$lock' \
-         lock_command '$lock'
+         before-sleep '$lock'

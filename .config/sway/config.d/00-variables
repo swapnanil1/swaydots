@@ -10,7 +10,7 @@ set $menu wofi --show drun -I -m -p "Run:"
 set $filemanager nemo
 set $clipboard cliphist list | wofi --dmenu -p "Clipboard:" | cliphist decode | wl-copy
 set $lock swaylock -f -c 11111b # Uses $crust color
-
+set $browser firefox
 ### Movement Keys (vim-style)
 set $left h
 set $down j

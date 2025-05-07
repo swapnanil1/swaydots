@@ -5,10 +5,10 @@
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
-bindsym $mod+Shift+f exec $filemanager
-bindsym $mod+c exec $clipboard
+bindsym $mod+c exec $browser
 bindsym $mod+p exec $lock # Changed from $mod+l in original
-
+bindsym $mod+e exec $filemanager
+bindsym $mod+v exec $clipboard 
 ### Floating Window Modifier
 floating_modifier $mod normal
 
@@ -62,11 +62,11 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 ### Layout Control
-bindsym $mod+b splith
-bindsym $mod+v splitv
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+b splith
+#bindsym $mod+v splitv
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
 
 ### Window State Control
 bindsym $mod+f fullscreen
