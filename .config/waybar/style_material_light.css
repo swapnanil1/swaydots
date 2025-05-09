@@ -1,80 +1,89 @@
-/* Material-Inspired Dark Theme Palette */
-@define-color md_dark_bg_main      #121212; /* Very dark main background */
-@define-color md_dark_bg_surface   #1E1E1E; /* Darker gray for module "cards" */
-@define-color md_dark_bg_hover     #2C2C2C; /* Subtle hover for dark surfaces */
-@define-color md_dark_text_primary #E0E0E0; /* Light primary text */
-@define-color md_dark_text_secondary #B0B0B0; /* Lighter secondary text (still light) */
-@define-color md_dark_divider      #383838; /* Subtle dark borders/dividers */
+/* Material-Inspired Light Theme Palette */
+@define-color md_bg_main      #F5F5F5; /* Main bar background (slightly off-white) */
+@define-color md_bg_surface   #FFFFFF; /* Module background (white cards) */
+@define-color md_bg_hover     #EEEEEE; /* Subtle hover */
+@define-color md_text_primary #212121; /* Dark primary text */
+@define-color md_text_secondary #757575; /* Lighter secondary text */
+@define-color md_divider      #E0E0E0; /* Subtle borders/dividers */
 
-/* Accent colors remain largely the same, but ensure they have good contrast on dark */
-@define-color md_blue_accent  #64B5F6; /* (Material Blue 300) */
-@define-color md_teal_accent  #4DB6AC; /* (Material Teal 300) */
-@define-color md_green_accent #81C784; /* (Material Green 300) */
-@define-color md_yellow_accent #FFF176; /* (Material Yellow 300) */
-@define-color md_red_accent   #E57373; /* (Material Red 300) */
-@define-color md_purple_accent #9575CD; /* (Material Deep Purple 300) */
-@define-color md_orange_accent #FFB74D; /* (Material Orange 300) */
+@define-color md_blue         #2196F3; /* Primary Accent (e.g., Material Blue 500) */
+@define-color md_teal         #009688; /* Secondary Accent (e.g., Material Teal 500) */
+@define-color md_green        #4CAF50; /* Success/Green */
+@define-color md_yellow       #FFC107; /* Warning/Amber */
+@define-color md_red          #F44336; /* Error/Red */
+@define-color md_purple       #673AB7; /* Example for another accent */
 
-
-/* Mapped Catppuccin names to Material Dark (for structure compatibility) */
-@define-color base @md_dark_bg_main;
-@define-color mantle @md_dark_bg_surface;
-@define-color crust @md_dark_bg_surface;
-
-@define-color surface0 @md_dark_bg_surface;
-@define-color surface1 @md_dark_bg_hover;
-@define-color surface2 @md_dark_bg_main;
-
-@define-color text @md_dark_text_primary;
-@define-color subtext1 @md_dark_text_secondary;
-@define-color subtext0 @md_dark_divider;
-
-@define-color overlay2 @md_dark_divider;
-@define-color overlay1 @md_dark_text_secondary;
-@define-color overlay0 @md_dark_text_primary;
-
-@define-color rosewater @md_dark_text_primary;
-@define-color flamingo @md_red_accent;
-@define-color pink @md_purple_accent;
-@define-color mauve @md_purple_accent;
-@define-color red @md_red_accent;
-@define-color maroon @md_red_accent;
-@define-color peach @md_orange_accent;
-@define-color yellow @md_yellow_accent;
-@define-color green @md_green_accent;
-@define-color teal @md_teal_accent;
-@define-color sky @md_blue_accent;
-@define-color sapphire @md_blue_accent;
-@define-color blue @md_blue_accent;
-@define-color lavender @md_purple_accent;
-
-@define-color bright_yellow @md_yellow_accent;
-@define-color bright_red @md_red_accent;
-@define-color bright_green @md_green_accent;
+/* Manually chosen darker/lighter variants */
+@define-color md_yellow_dark  #E6AD00;
+@define-color md_blue_dark    #1E88E5;
+@define-color md_red_light_bg #FFCDD2; /* or rgba(244, 67, 54, 0.2) for transparency */
+@define-color md_green_dark   #43A047;
+@define-color md_red_dark     #D32F2F;
+@define-color md_purple_dark  #5E35B1;
+@define-color md_teal_dark    #00796B;
 
 
-/* --- Rest of your CSS structure, now using Material Dark colors & styling --- */
+/* Mapped Catppuccin names to Material Light (for structure compatibility) */
+@define-color base @md_bg_main;
+@define-color mantle @md_bg_surface;
+@define-color crust @md_bg_surface;
+
+@define-color surface0 @md_bg_surface; /* Module backgrounds */
+@define-color surface1 @md_bg_hover;   /* Hover backgrounds */
+@define-color surface2 @md_bg_main;    /* Can be same as base for flatter elements */
+
+@define-color text @md_text_primary;
+@define-color subtext1 @md_text_secondary;
+@define-color subtext0 @md_divider; /* For less emphasis */
+
+@define-color overlay2 @md_divider;
+@define-color overlay1 @md_text_secondary;
+@define-color overlay0 @md_text_primary;
+
+/* Accent mappings - using Material accents */
+@define-color rosewater @md_text_primary;
+@define-color flamingo @md_red;
+@define-color pink @md_purple;
+@define-color mauve @md_purple;
+@define-color red @md_red;
+@define-color maroon @md_red_dark; /* Using the darker red for maroon */
+@define-color peach @md_yellow;
+@define-color yellow @md_yellow;
+@define-color green @md_green;
+@define-color teal @md_teal;
+@define-color sky @md_blue;
+@define-color sapphire @md_blue_dark; /* Using darker blue for sapphire */
+@define-color blue @md_blue;
+@define-color lavender @md_purple;
+
+@define-color bright_yellow @md_yellow;
+@define-color bright_red @md_red;
+@define-color bright_green @md_green;
+
+
+/* --- Rest of your CSS structure, now using Material Light colors & styling --- */
 
 * {
     font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome, sans-serif;
     font-size: 13px;
     border: none;
-    border-radius: 6px;
+    border-radius: 6px; /* Default rounded corners for Material feel */
     min-height: 0;
-    transition: all 0.2s ease-out;
-    box-shadow: none;
+    transition: all 0.2s ease-out; /* Slightly faster, common Material transition */
+    box-shadow: none; /* Default to no shadow, apply specifically */
 }
 
 window#waybar {
     background-color: @base;
     color: @text;
-    border-bottom: 1px solid @md_dark_divider;
+    border-bottom: 1px solid @md_divider;
 }
 
 window#waybar.hidden {
     opacity: 0.2;
 }
 
+/* General module styling - "Card" like */
 #workspaces,
 #clock,
 #battery,
@@ -100,10 +109,11 @@ window#waybar.hidden {
     padding: 3px 12px;
     margin: 5px 4px;
     border-radius: 8px;
-    border: 1px solid @md_dark_divider;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    border: 1px solid @md_divider;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
 }
 
+/* General module hover styling */
 #clock:hover,
 #battery:hover,
 #memory:hover,
@@ -117,16 +127,17 @@ window#waybar.hidden {
 #custom-mpris-prev:hover,
 #custom-mpris-playpause:hover,
 #custom-mpris-next:hover,
-#wlr-taskbar button:hover,
+#wlr-taskbar button:hover, /* Target button */
 #custom-screenshot:hover,
 #cpu:hover,
 #custom-cputemp:hover,
 #custom-gputemp:hover {
     background-color: @surface1;
     color: @text;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* CPU/GPU Temp Group */
 #cpu, #custom-cputemp, #custom-gputemp {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -158,6 +169,7 @@ window#waybar.hidden {
     border-left: none;
 }
 
+/* Workspaces */
 #workspaces {
     background-color: transparent;
     padding: 0 0px;
@@ -172,7 +184,8 @@ window#waybar.hidden {
     border-radius: 6px;
     color: @subtext1;
     background-color: @surface0;
-    border: 1px solid @md_dark_divider;
+    border: 1px solid @md_divider;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 #workspaces button:hover {
@@ -183,7 +196,7 @@ window#waybar.hidden {
 
 #workspaces button.focused {
     background-color: @blue;
-    color: @md_dark_bg_main;
+    color: @md_bg_surface;
     border: 1px solid @blue;
     font-weight: bold;
     box-shadow: 0 1px 3px alpha(@blue, 0.3);
@@ -193,12 +206,12 @@ window#waybar.hidden {
     color: @blue;
     font-style: normal;
     border-color: @blue;
-    background-color: alpha(@blue, 0.15);
+    background-color: alpha(@blue, 0.1);
 }
 
 #workspaces button.urgent {
     background-color: @red;
-    color: @md_dark_bg_main;
+    color: @md_bg_surface;
     font-weight: bold;
     border-color: @red;
     animation: pulse-urgent 0.8s infinite ease-in-out alternate;
@@ -207,10 +220,11 @@ window#waybar.hidden {
 #workspaces button.empty {
     color: @subtext0;
     background-color: @base;
-    border-color: @md_dark_divider;
+    border-color: @md_divider;
     box-shadow: none;
 }
 
+/* Taskbar */
 #wlr-taskbar {
     background: transparent;
     padding: 0;
@@ -225,7 +239,8 @@ window#waybar.hidden {
     padding: 3px 10px;
     margin: 0 3px;
     border-radius: 6px;
-    border: 1px solid @md_dark_divider;
+    border: 1px solid @md_divider;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 #wlr-taskbar button:hover {
@@ -236,17 +251,19 @@ window#waybar.hidden {
 
 #wlr-taskbar button.active {
     background-color: @teal;
-    color: @md_dark_bg_main;
+    color: @md_bg_surface;
     border-color: @teal;
     font-weight: bold;
 }
 
+/* Specific Module Colors */
 #memory {
     color: @yellow;
 }
 #memory:hover {
     background-color: @yellow;
-    color: @md_dark_bg_main;
+    color: @md_text_primary;
+    border-color: @md_yellow_dark; /* FIXED */
 }
 
 #network {
@@ -254,11 +271,12 @@ window#waybar.hidden {
 }
 #network:hover {
     background-color: @blue;
-    color: @md_dark_bg_main;
+    color: @md_bg_surface;
+    border-color: @md_blue_dark; /* FIXED */
 }
 #network.disconnected {
     color: @red;
-    background-color: alpha(@red, 0.2);
+    background-color: @md_red_light_bg; /* FIXED */
     border: 1px solid @red;
 }
 
@@ -267,19 +285,22 @@ window#waybar.hidden {
 }
 #battery:hover {
     background-color: @green;
-    color: @md_dark_bg_main;
+    color: @md_bg_surface;
+    border-color: @md_green_dark; /* FIXED */
 }
 #battery.charging,
 #battery.plugged {
     color: @teal;
 }
 #battery.warning {
-    color: @md_dark_bg_main;
+    color: @md_text_primary;
     background-color: @yellow;
+    border: 1px solid @md_yellow_dark; /* FIXED */
 }
 #battery.critical {
-    color: @md_dark_bg_main;
+    color: @md_bg_surface;
     background-color: @red;
+    border: 1px solid @md_red_dark; /* FIXED */
     animation: blink 0.8s infinite alternate;
 }
 
@@ -303,7 +324,7 @@ window#waybar.hidden {
 }
 #tray > .needs-attention {
     background-color: @yellow;
-    color: @md_dark_bg_main;
+    color: @md_text_primary;
     padding: 0 4px;
     border-radius: 6px;
     margin: 0 2px;
@@ -333,7 +354,7 @@ window#waybar.hidden {
 #pulseaudio.muted {
     color: @subtext1;
     background-color: @surface0;
-    border: 1px solid @md_dark_divider;
+    border: 1px solid @md_divider;
 }
 
 #custom-pomo {
@@ -341,13 +362,13 @@ window#waybar.hidden {
     font-weight: bold;
 }
 #custom-pomo.paused {
-    color: @md_dark_text_secondary;
-    background-color: @md_dark_bg_hover;
-    border-color: @md_dark_divider;
+    color: @md_text_secondary;
+    background-color: @md_bg_hover;
+    border-color: @md_divider;
 }
 #custom-pomo.break {
     color: @green;
-    background-color: alpha(@green, 0.15);
+    background-color: @md_red_light_bg; /* Re-using a light color, was lighten(@green, 35%) */
     border-color: @green;
 }
 
@@ -361,7 +382,8 @@ window#waybar.hidden {
 }
 #clock:hover {
     background-color: @lavender;
-    color: @md_dark_bg_main;
+    color: @md_bg_surface;
+    border-color: @md_purple_dark; /* FIXED */
 }
 
 #custom-power {
@@ -371,54 +393,55 @@ window#waybar.hidden {
 }
 #custom-power:hover {
     background-color: @red;
-    color: @md_dark_bg_main;
+    color: @md_bg_surface;
+    border-color: @md_red_dark; /* FIXED (maroon was md_red_dark) */
 }
 
 tooltip {
-    background-color: @md_dark_bg_surface;
-    color: @md_dark_text_primary;
+    background-color: @md_bg_surface;
+    color: @md_text_primary;
     border-radius: 6px;
-    border: 1px solid @md_dark_divider;
+    border: 1px solid @md_divider;
     padding: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
 tooltip label {
-    color: @md_dark_text_primary;
+    color: @md_text_primary;
 }
 
 @keyframes blink {
     to {
         background-color: @red;
-        color: @md_dark_bg_main;
+        color: @md_bg_surface;
     }
     from {
-        background-color: alpha(@red, 0.7);
-        color: @md_dark_bg_main;
+        background-color: @md_red_light_bg; /* Using light red for from state */
+        color: @md_bg_surface;
     }
 }
 
 @keyframes pulse-urgent {
     0% {
-        box-shadow: 0 0 3px alpha(@red, 0.4);
+        box-shadow: 0 0 3px alpha(@red, 0.3);
     }
     50% {
-        box-shadow: 0 0 8px alpha(@red, 0.6);
+        box-shadow: 0 0 8px alpha(@red, 0.5);
     }
     100% {
-        box-shadow: 0 0 3px alpha(@red, 0.4);
+        box-shadow: 0 0 3px alpha(@red, 0.3);
     }
 }
 
 @keyframes pulse-charge {
     0% {
-        color: @teal; /* This is @md_teal_accent */
+        color: @teal;
     }
     50% {
-        color: @md_dark_text_primary; /* FIXED - Use main text for a bright pulse */
+        color: @md_teal_dark; /* FIXED */
     }
     100% {
-        color: @teal; /* This is @md_teal_accent */
+        color: @teal;
     }
 }
 

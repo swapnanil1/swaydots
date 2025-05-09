@@ -10,7 +10,6 @@ insensitive=true
 allow_images=true
 show_icons=true
 image_size=32
-matching=fuzzy
 term=alacritty
 parse_actions=true
 
