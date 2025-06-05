@@ -2,11 +2,11 @@
 # Applications and services to launch when Sway starts
 
 # Autostart personal apps
-exec flatpak run org.keepassxc.KeePassXC
-exec flatpak org.qbittorrent.qBittorrent
-exec flatpak dev.vencord.Vesktop
+exec "flatpak run org.keepassxc.KeePassXC"
+exec "flatpak run org.qbittorrent.qBittorrent"
+exec "flatpak run dev.vencord.Vesktop"
 exec kdeconnect-indicator
-
+exec lan-mouse
 # --- Core Services & Daemons ---
 
 # swaybg sets wallpaper
