@@ -10,7 +10,7 @@ exec lan-mouse
 # --- Core Services & Daemons ---
 
 # swaybg sets wallpaper
-exec_always --no-startup-id swaybg -i ~/Pictures/wall.jpg -m fill
+exec_always bash -c 'pkill swaybg; swaybg -i ~/Pictures/wall.jpg -m fill &'
 
 # Clipboard history daemon
 exec wl-paste --watch cliphist store
