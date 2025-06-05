@@ -7,10 +7,10 @@ set $mod Mod4
 ### Applications
 set $term alacritty
 set $menu wofi --show drun -I -m -p "Run:"
-set $filemanager nemo
+set $filemanager thunar
 set $clipboard cliphist list | wofi --dmenu -p "Clipboard:" | cliphist decode | wl-copy
 set $lock swaylock -f -c 11111b # Uses $crust color
-set $browser firefox
+set $browser "flatpak run app.zen_browser.zen"
 ### Movement Keys (vim-style)
 set $left h
 set $down j

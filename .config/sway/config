@@ -10,8 +10,9 @@ include config.d/00-variables
 # Fonts, Borders, Gaps, Window Colors
 include config.d/10-appearance
 
-# Monitor setup (add input config here if needed)
+# Hardware/Display setup (add input config here if needed)
 include config.d/20-outputs-inputs
+#include config.d/20-outputs-laptop-inputs
 
 # Startup applications (except idle)
 include config.d/30-autostart

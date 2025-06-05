@@ -2,7 +2,10 @@
 # Applications and services to launch when Sway starts
 
 # Autostart personal apps
-exec flatpak run org.telegram.desktop
+exec flatpak run org.keepassxc.KeePassXC
+exec flatpak org.qbittorrent.qBittorrent
+exec flatpak dev.vencord.Vesktop
+exec kdeconnect-indicator
 
 # --- Core Services & Daemons ---
 
@@ -14,28 +17,18 @@ exec wl-paste --watch cliphist store
 
 # Notification daemon (Choose ONE: dunst OR swaync)
 exec dunst
-# exec swaync # Uncomment this and comment out 'exec dunst' if you prefer swaync
 
-# PolicyKit agent (Authentication prompts)
-exec /usr/bin/lxqt-policykit-agent &
+# PolicyKit agent (Authentication prompts) : using lxsession-gtk3
+exec /usr/bin/lxpolkit &
 # Ensure this is the correct path/agent
 
 # Status bar
 exec waybar
 
-# --- Environment Setup for Systemd/D-Bus Integration ---
-# Import essential env vars into systemd user session
-#exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-# Update D-Bus activation environment
-#exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-
 # --- Optional User Applications & Utilities ---
 
 # Automatic tiling script (Install 'autotiling-rs' or similar package first)
 exec autotiling
-
-# Password manager (starts GUI on login)
-#exec /usr/bin/keepassxc
 
 # --- Setup for Utilities Used by Keybinds ---
 # Define screenshot directory location
@@ -48,3 +41,9 @@ exec powerprofilesctl set power-saver
 
 # autostart waybar's pomodoro script
 exec ~/.config/waybar/scripts/pomo.sh start
+
+# --- Environment Setup for Systemd/D-Bus Integration ---
+# Import essential env vars into systemd user session
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+# Update D-Bus activation environment
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway

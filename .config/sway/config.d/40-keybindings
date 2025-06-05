@@ -108,5 +108,4 @@ bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # Screenshots (Uses $screenshot_dir set in autostart)
-bindsym --locked Print exec grim "$screenshot_dir/$(date +'%Y-%m-%d_%H-%M-%S_grim.png')"
-bindsym --locked $mod+Print exec grim -g "$(slurp)" "$screenshot_dir/$(date +'%Y-%m-%d_%H-%M-%S_slurp.png')"
+bindsym Print exec ~/.config/waybar/scripts/screenshot_active.sh
