@@ -1,24 +1,37 @@
-## Install 
+## Install Core Apps
 ```
-sudo pacman -Syu --needed sway swaybg swaylock swayidle ly xorg-xwayland xdg-desktop-portal xdg-desktop-portal-wlr xdg-utils xdg-user-dirs wayland-protocols fish alacritty eza jq nemo nemo-fileroller cliphist wl-clipboard lxqt-policykit waybar wofi dunst autotiling python-i3ipc ttf-jetbrains-mono-nerd ttf-font-awesome nwg-look qt6ct kvantum qt6-wayland pipewire pipewire-pulse pavucontrol power-profiles-daemon lm_sensors brightnessctl ddcutil grim slurp satty playerctl keepassxc ristretto xreader xed ufw timeshift
+sudo pacman -Syu --needed \
+  sway swaybg swaylock swayidle ly xorg-xwayland \
+  xdg-desktop-portal xdg-desktop-portal-wlr xdg-user-dirs \
+  fish alacritty eza thunar thunar-volman thunar-archive-plugin \
+  cliphist wl-clipboard lxsession-gtk3 waybar wofi dunst \
+  autotiling python-i3ipc ttf-jetbrains-mono-nerd ttf-font-awesome \
+  nwg-look pavucontrol power-profiles-daemon lm_sensors \
+  brightnessctl ddcutil grim satty ufw timeshift
 ```
-## Setup Autotiling 
-Install python-i3ipc then rename and insert [main](https://github.com/nwg-piotr/autotiling/blob/master/autotiling/main.py) script's content under usr/bin/autotiling 
-
-```
-sudo chsh -s /usr/bin/fish swapnanil
-sudo chmod +x usr/bin/autotiling
+## Install User Apps
+```bash
+flatpak install flathub \
+  app.zen_browser.zen \
+  org.keepassxc.KeePassXC \
+  com.brave.Browser \
+  org.qbittorrent.qBittorrent \
+  org.telegram.desktop \
+  org.onlyoffice.desktopeditors \
+  org.localsend.localsend_app \
+  com.dec05eba.gpu_screen_recorder \
+  md.obsidian.Obsidian \
+  dev.vencord.Vesktop \
+  org.qownnotes.QOwnNotes \
+  io.github.peazip.PeaZip \
+  com.github.KRTirtho.Spotube
 ```
 
 ## Setup Brighness using ddcutil
 ```
 sudo pacman -S ddcutil; echo "i2c-dev" | sudo tee -a /etc/modules-load.d/i2c-dev.conf > /dev/null; sudo usermod swapnanil -aG i2c
 ```
-## Fix Fixing the empty “open with” in Dolphin in Any WM (if using dolphin)
-```
-sudo pacman -S archlinux-xdg-menu
-XDG_MENU_PREFIX=arch- kbuildsycoca6
-```
+
 # Usage
 
 | Function          | Shortcut     | Using             |
