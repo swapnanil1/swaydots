@@ -38,16 +38,14 @@ sudo pacman -S ddcutil; echo "i2c-dev" | sudo tee -a /etc/modules-load.d/i2c-dev
 | ----------------- | ------------ | ----------------- |
 | App Launcher      | Meta+D       | Wofi              |
 | Clipboard History | Meta+P       | Chiphist          |
-| ScreenShot        | Meta+Shift+P | FlameShot         |
+| ScreenShot        | Meta+Shift+P | Satty             |
 | Close Window      | Meta+Shift+Q | Sway              |
-| Browser           | Meta+B       | Firefox           |
-| FileManager       | Meta+E       | nemo              |
+| Browser           | Meta+B       | Zen Browser       |
+| FileManager       | Meta+E       | thunar            |
 | Terminal          | Meta+Return  | Alacritty         |
-| Notifications     | Meta+N       | Swaync            |
-| Start Pomodoro    | Meta+K       | i3-gnome-pomodoro |
-| Toggle Pomodoro   | Meta+L       | i3-gnome-pomodoro |
-| Polkit agent      | None         | lxqt-policykit    |
-| Bluetooth         | None         | blueman or bluetuith|
+| Notifications     | Meta+N       | dunst             |
+| Polkit agent      | None         | lxsession-gtk3    |
+| Bluetooth         | None         | blueman  bluetuith|
 
 
 # Themes
