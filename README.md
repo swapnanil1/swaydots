@@ -2,12 +2,12 @@
 ```
 sudo pacman -Syu --needed \
   sway swaybg swaylock swayidle ly xorg-xwayland \
-  xdg-desktop-portal xdg-desktop-portal-wlr xdg-user-dirs \
+  xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk xdg-user-dirs \
   fish alacritty eza thunar thunar-volman thunar-archive-plugin \
   cliphist wl-clipboard lxsession-gtk3 waybar wofi dunst \
   autotiling python-i3ipc ttf-jetbrains-mono-nerd ttf-font-awesome \
   nwg-look pavucontrol power-profiles-daemon lm_sensors \
-  brightnessctl ddcutil grim satty ufw timeshift
+  brightnessctl ddcutil grim satty ufw timeshift ristretto mousepad mpv
 ```
 ## Install User Apps
 ```bash
