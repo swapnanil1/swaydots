@@ -21,7 +21,7 @@ input type:mouse {
 
 input "10182:480:GXT7863:00_27C6:01E0_Touchpad" {
     tap enabled
-    natural_scroll disabled
+    natural_scroll enabled
     dwt enabled
     accel_profile adaptive
 }
@@ -29,3 +29,7 @@ input "10182:480:GXT7863:00_27C6:01E0_Touchpad" {
 ### Power Management
 bindswitch --reload lid:on output eDP-1 enable
 bindswitch --reload lid:off exec swaylock && systemctl suspend && output eDP-1 disable
+
+### Switch Workspace using touchpad
+bindgesture swipe:right workspace next
+bindgesture swipe:left workspace prev
