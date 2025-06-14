@@ -12,7 +12,7 @@ include config.d/10-appearance
 
 # Hardware/Display setup (add input config here if needed)
 include config.d/20-outputs-inputs
-#include config.d/20-outputs-laptop-inputs
+#include config.d/20-outputs-inputs-laptop
 
 # Startup applications (except idle)
 include config.d/30-autostart
