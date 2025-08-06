@@ -8,7 +8,7 @@ sudo pacman -Syu --needed \
   autotiling python-i3ipc ttf-jetbrains-mono-nerd ttf-font-awesome \
   nwg-look pavucontrol power-profiles-daemon lm_sensors \
   brightnessctl ddcutil grim satty ufw timeshift ristretto mpv \
-  baobab gnome-system-monitor blueberry lightdm lightdm-gtk-greeter
+  baobab gnome-system-monitor blueberry
 ```
 ## Install User Apps
 ```bash
