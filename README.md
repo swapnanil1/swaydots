@@ -4,10 +4,11 @@ sudo pacman -Syu --needed \
   sway swaybg swaylock swayidle ly xorg-xwayland \
   xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk xdg-user-dirs \
   fish alacritty eza thunar thunar-volman thunar-archive-plugin \
-  cliphist wl-clipboard lxsession-gtk3 waybar wofi dunst \
+  cliphist wl-clipboard waybar wofi dunst \
   autotiling python-i3ipc ttf-jetbrains-mono-nerd ttf-font-awesome \
   nwg-look pavucontrol power-profiles-daemon lm_sensors \
-  brightnessctl ddcutil grim satty ufw timeshift ristretto mousepad mpv
+  brightnessctl ddcutil grim satty ufw timeshift ristretto mpv \
+  baobab gnome-system-monitor blueberry lightdm lightdm-gtk-greeter
 ```
 ## Install User Apps
 ```bash
@@ -24,7 +25,6 @@ flatpak install flathub \
   dev.vencord.Vesktop \
   org.qownnotes.QOwnNotes \
   io.github.peazip.PeaZip \
-  com.github.KRTirtho.Spotube
 ```
 
 ## Setup Brighness using ddcutil
@@ -34,18 +34,22 @@ sudo pacman -S ddcutil; echo "i2c-dev" | sudo tee -a /etc/modules-load.d/i2c-dev
 
 # Usage
 
-| Function          | Shortcut     | Using             |
-| ----------------- | ------------ | ----------------- |
-| App Launcher      | Meta+D       | Wofi              |
-| Clipboard History | Meta+P       | Chiphist          |
-| ScreenShot        | Meta+Shift+P | Satty             |
-| Close Window      | Meta+Shift+Q | Sway              |
-| Browser           | Meta+B       | Zen Browser       |
-| FileManager       | Meta+E       | thunar            |
-| Terminal          | Meta+Return  | Alacritty         |
-| Notifications     | Meta+N       | dunst             |
-| Polkit agent      | None         | lxsession-gtk3    |
-| Bluetooth         | None         | blueman  bluetuith|
+| Function | Shortcut | Application/Service |
+| :--- | :--- | :--- |
+| App Launcher | `Meta` + `Space` | Wofi |
+| Terminal | `Meta` + `Return` | Alacritty |
+| File Manager | `Meta` + `F` | Thunar |
+| Web Browser | `Meta` + `C` | Firefox (or `$browser`) |
+| Close Window | `Meta` + `Shift` + `Q` | Sway (kill command) |
+| Clipboard History | `Meta` + `V` | Cliphist (via Wofi) |
+| Screenshot (Region) | `Print` (Save) / `Shift`+`Print` (Copy) | `grim` + `slurp` |
+| Lock Screen | `Meta` + `P` | swaylock |
+| Notifications | (Runs automatically) | Dunst |
+| Bluetooth GUI | `Meta` + `Shift` + `B` | Blueberry |
+| Network GUI | `Meta` + `Shift` + `N` | Network Manager |
+| Volume GUI | `Meta` + `Shift` + `V` | Pavucontrol |
+| System Monitor | `Ctrl` + `Alt` + `Delete` | GNOME System Monitor|
+| Polkit Agent | (Runs automatically) | xdg-desktop-portal-wlr |
 
 
 # Themes
