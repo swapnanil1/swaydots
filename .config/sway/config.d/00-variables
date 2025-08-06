@@ -1,21 +1,37 @@
 # ~/.config/sway/config.d/00-variables
 # Variables, Application definitions, Color definitions
 
-### Modifier Keys
+### Modifier Key
 set $mod Mod4
 
-### Applications
+### Core Applications
 set $term alacritty
 set $menu wofi --show drun -I -m -p "Run:"
+set $browser firefox
 set $filemanager thunar
-set $clipboard cliphist list | wofi --dmenu -p "Clipboard:" | cliphist decode | wl-copy
-set $lock swaylock -f -c 11111b # Uses $crust color
-set $browser "flatpak run app.zen_browser.zen"
-### Movement Keys (vim-style)
-set $left h
-set $down j
-set $up k
-set $right l
+
+### GUI Utilities
+set $sysmonitor gnome-system-monitor
+set $network nm-connection-editor
+set $volume_control pavucontrol
+set $bluetooth blueberry
+set $disk_usage baobab
+
+### Clipboard and Screenshot Tools
+set $clipboard exec cliphist list | wofi --dmenu -p "Clipboard:" | cliphist decode | wl-copy
+set $screenshot_dir ~/Pictures/Screenshots
+set $screenshot_full_save exec grim "$screenshot_dir/$(date +'%Y-%m-%d_%H-%M-%S.png')"
+set $screenshot_select_save exec grim -g "$(slurp)" "$screenshot_dir/$(date +'%Y-%m-%d_%H-%M-%S.png')"
+set $screenshot_window_save exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" "$screenshot_dir/$(date +'%Y-%m-%d_%H-%M-%S.png')"
+set $screenshot_full_copy exec grim - | wl-copy --type image/png
+set $screenshot_select_copy exec grim -g "$(slurp)" - | wl-copy --type image/png
+set $screenshot_window_copy exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | wl-copy --type image/png
+
+### Movement Keys (One-Handed WASD)
+set $left a
+set $down s
+set $up w
+set $right d
 
 ### Catppuccin Mocha Color Palette
 set $rosewater #f5e0dc
@@ -45,7 +61,8 @@ set $base #1e1e2e
 set $mantle #181825
 set $crust #11111b
 
-# Updated swaylock command with Catppuccin theme and wallpaper
+### Themed Applications (Lock Screen)
+# NOTE: Ensure the path to your wallpaper is correct.
 set $lock swaylock \
     --image ~/Pictures/Wallpapers/Lockscreen/lock.png \
     --font "JetBrainsMono Nerd Font" \
